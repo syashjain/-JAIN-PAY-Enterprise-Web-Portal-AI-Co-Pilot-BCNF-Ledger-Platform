@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ JAIN PAY (JanPay)
+# ⚡ JAIN PAY (JainPay)
 ### **Enterprise PostgreSQL 16.4+ BCNF Double-Entry UPI Ledger, 15 Zero-Trust AI Co-Pilot Modules, 3D Spatial Command Deck & Factory Design System**
 
 [![PostgreSQL 16.4+](https://img.shields.io/badge/PostgreSQL-16.4+_BCNF_Ledger-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
