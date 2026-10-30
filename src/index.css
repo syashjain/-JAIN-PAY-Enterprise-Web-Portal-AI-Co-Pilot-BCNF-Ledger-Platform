@@ -1,0 +1,1205 @@
+@import "tailwindcss";
+
+@theme {
+  /* Factory Design System — Canonical Color Tokens */
+  --color-obsidian-canvas: #101010;
+  --color-carbon-lift: #1d1a18;
+  --color-ash-stroke: #3d3a39;
+  --color-graphite-mid: #4d4947;
+  --color-warm-granite: #8a8380;
+  --color-pale-stone: #b8b3b0;
+  --color-bone: #eeeeee;
+  --color-chalk: #fafafa;
+  --color-signal-orange: #ee6018;
+  --color-metric-green: #a0ca92;
+
+  /* Factory Design System — Typography */
+  --font-geist: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-geist-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Factory Design System — Typography Scale */
+  --text-caption: 12px;
+  --leading-caption: 1;
+  --tracking-caption: -0.24px;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.43;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --text-heading: 36px;
+  --leading-heading: 1.1;
+  --tracking-heading: -1.12px;
+  --text-heading-lg: 44px;
+  --leading-heading-lg: 1.12;
+  --tracking-heading-lg: -1.1px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -2.88px;
+
+  /* Factory Design System — Spacing (8px base unit) */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-56: 56px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+
+  /* Factory Design System — Strict 3px / 10px / 20px Border Radius */
+  --radius-sm: 3px;
+  --radius-lg: 10px;
+  --radius-2xl: 20px;
+}
+
+:root {
+  /* Colors */
+  --color-obsidian-canvas: #101010;
+  --color-carbon-lift: #1d1a18;
+  --color-ash-stroke: #3d3a39;
+  --color-graphite-mid: #4d4947;
+  --color-warm-granite: #8a8380;
+  --color-pale-stone: #b8b3b0;
+  --color-bone: #eeeeee;
+  --color-chalk: #fafafa;
+  --color-signal-orange: #ee6018;
+  --color-metric-green: #a0ca92;
+
+  /* Typography — Font Families */
+  --font-geist: 'Geist', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-geist-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Typography — Scale */
+  --text-caption: 12px;
+  --leading-caption: 1;
+  --tracking-caption: -0.24px;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.43;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --text-heading: 36px;
+  --leading-heading: 1.1;
+  --tracking-heading: -1.12px;
+  --text-heading-lg: 44px;
+  --leading-heading-lg: 1.12;
+  --tracking-heading-lg: -1.1px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -2.88px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-56: 56px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap: 96px;
+  --card-padding: 24px;
+  --element-gap: 24px;
+
+  /* Strict Border Radius Tokens (3px / 10px / 20px) */
+  --radius-sm: 3px;
+  --radius-lg: 10px;
+  --radius-2xl: 20px;
+  --radius-nav: 3px;
+  --radius-buttons: 3px;
+  --radius-cards: 10px;
+  --radius-largepanels: 20px;
+
+  /* Strict Surface Hierarchy (#101010 Canvas, #1d1a18 Lift, rgba(238, 238, 238, 0.85) Translucent Primary Cards) */
+  --surface-obsidian-canvas: #101010;
+  --surface-carbon-lift: #1d1a18;
+  --surface-bone-card: rgba(238, 238, 238, 0.85);
+  --surface-dark-translucent-card: rgba(22, 20, 19, 0.84);
+  --surface-chalk-elevated: #fafafa;
+
+  /* Diagnostic aliases required by src/main.tsx startup verification */
+  --bg-void: #101010;
+  --bg-obsidian-card: #eeeeee;
+  --bg-obsidian-elevated: #1d1a18;
+  --accent-orange: #ee6018;
+  --accent-amber: #a0ca92;
+  --text-primary: #eeeeee;
+  --text-secondary: #b8b3b0;
+  --text-muted: #8a8380;
+}
+
+/* ========================================================================== */
+/* 1. ZERO SHADOWS & BASE RESET (WITH TRANSLUCENT CARD BACKDROP-FILTER)       */
+/* ========================================================================== */
+*,
+*::before,
+*::after,
+.shadow,
+.shadow-sm,
+.shadow-md,
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl {
+  box-sizing: border-box;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  /* Preserve zero-blur baseline token reference: backdrop-filter: none !important on non-card primitives */
+}
+
+.backdrop-blur-none {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html,
+body {
+  font-family: var(--font-geist);
+  font-weight: var(--font-weight-regular);
+  background-color: var(--surface-obsidian-canvas);
+  color: var(--color-bone);
+  margin: 0;
+  padding: 0;
+  line-height: var(--leading-body);
+  letter-spacing: -0.015em;
+}
+
+/* ========================================================================== */
+/* 2. FACTORY TYPOGRAPHY DISCIPLINE (Geist 400 + Geist Mono 12px Uppercase)   */
+/* ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: var(--font-geist);
+  font-weight: var(--font-weight-regular) !important;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+code,
+pre,
+.font-mono {
+  font-family: var(--font-geist-mono);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -0.02em;
+}
+
+/* Mechanical CLI Transitions (0.15s cubic-bezier(0.4, 0, 0.2, 1)) */
+button,
+a,
+input,
+select,
+textarea {
+  transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================================================== */
+/* 3. DARK MODE SURFACE HIERARCHY (DEFAULT / [data-theme="dark"])             */
+/*    - #101010 (--surface-obsidian-canvas) for Canvas                        */
+/*    - #1d1a18 (--surface-carbon-lift) for Lift                              */
+/*    - rgba(22, 20, 19, 0.84) Translucent Obsidian for Dark Mode Cards       */
+/*    - rgba(238, 238, 238, 0.85) (--surface-bone-card) for Light Mode Cards  */
+/* ========================================================================== */
+
+/* Level 0: Obsidian Canvas (#101010) & Translucent Backdrop Overlays */
+.bg-void-orange,
+.factory-canvas,
+.bg-\[\#101010\],
+.bg-\[\#050507\],
+.bg-\[\#09090E\],
+.bg-\[\#0d0d0d\],
+.bg-black {
+  background-color: var(--surface-obsidian-canvas) !important;
+  color: var(--color-bone);
+}
+
+.bg-\[\#101010\]\/90,
+.bg-\[\#101010\]\/94,
+.bg-\[\#101010\]\/95,
+.bg-\[\#050507\]\/85,
+.bg-black\/40,
+.bg-black\/60,
+.bg-black\/80 {
+  background-color: rgba(16, 16, 16, 0.72) !important;
+  color: var(--color-bone);
+}
+
+/* Level 1: Carbon Lift (#1d1a18) — Raised dark surfaces, nav wells, sub-cards, inputs */
+.card-3d-sub,
+.factory-lift,
+.bg-\[\#1d1a18\],
+.bg-\[\#1f1d1c\],
+.bg-\[\#12121A\],
+.bg-\[\#12121A\]\/85,
+.bg-\[\#12121A\]\/90,
+.bg-\[\#14141C\],
+.bg-\[\#161622\],
+.bg-\[\#121218\],
+.bg-\[\#0C0C12\]\/92,
+.bg-white\/5,
+.bg-white\/10 {
+  background-color: var(--surface-carbon-lift) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+}
+
+/* Level 2 (Dark Mode Default): Translucent Dark Carbon Primary Card so white/bone text (#eeeeee) is 100% legible over the 3D backdrop */
+.factory-bone-card,
+.card-3d-orange {
+  background-color: var(--surface-dark-translucent-card) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+  border-radius: var(--radius-cards) !important;
+  padding: var(--card-padding);
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  box-shadow: none !important;
+}
+
+/* Explicit .bg-[#eeeeee] token surface uses rgba(238, 238, 238, 0.85) with dark ink */
+.bg-\[\#eeeeee\] {
+  background-color: rgba(238, 238, 238, 0.85) !important;
+  color: var(--color-obsidian-canvas) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+}
+
+/* Factory Dashboard Frame (Translucent #101010 Canvas with 20px Large Panel radius & backdrop-filter) */
+.factory-dashboard-frame,
+.factory-large-panel {
+  background-color: rgba(16, 16, 16, 0.78) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+  border-radius: var(--radius-largepanels) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: none !important;
+}
+
+/* Factory Metric Tile (1px #1d1a18 divider, 20px padding) */
+.factory-metric-tile {
+  background-color: transparent !important;
+  border-color: var(--color-carbon-lift) !important;
+  padding: 20px;
+}
+
+/* ========================================================================== */
+/* 4. LIGHT MODE INVERTED VARIABLE SYSTEM ([data-theme="light"])              */
+/*    - Container & Card Surfaces: #ffffff at 92% opacity                     */
+/*      (--surface-inverted-container: rgba(255, 255, 255, 0.92))             */
+/*    - Primary Text: Strictly #101010 (--text-inverted-primary: #101010)     */
+/* ========================================================================== */
+
+:root[data-theme="light"],
+html[data-theme="light"],
+body[data-theme="light"],
+[data-theme="light"] {
+  --surface-inverted-canvas: #e5e2dc;
+  --surface-inverted-container: rgba(255, 255, 255, 0.92);
+  --surface-inverted-card: rgba(255, 255, 255, 0.92);
+  --surface-bone-card: rgba(238, 238, 238, 0.85);
+  --text-inverted-primary: #101010;
+  --text-inverted-secondary: #3d3936;
+  --text-inverted-muted: #57524e;
+  --border-inverted-stroke: #c2bcb2;
+
+  /* Invert global semantic tokens in Light Mode */
+  --text-primary: #101010;
+  --text-secondary: #3d3936;
+  --text-muted: #57524e;
+  --bg-obsidian-card: rgba(255, 255, 255, 0.92);
+  --bg-obsidian-elevated: rgba(255, 255, 255, 0.92);
+}
+
+html[data-theme="light"],
+body[data-theme="light"],
+[data-theme="light"].bg-\[\#101010\],
+[data-theme="light"] .factory-canvas,
+[data-theme="light"] .bg-void-orange {
+  background-color: var(--surface-inverted-canvas) !important;
+  color: var(--text-inverted-primary) !important;
+}
+
+/* Translucent Header & Overlay Bars in Light Mode (#ffffff at 92% opacity) */
+[data-theme="light"] header.bg-\[\#101010\]\/94,
+[data-theme="light"] header.bg-\[\#101010\]\/95,
+[data-theme="light"] footer.bg-\[\#101010\],
+[data-theme="light"] .bg-\[\#101010\]\/90,
+[data-theme="light"] .bg-\[\#101010\]\/94,
+[data-theme="light"] .bg-\[\#101010\]\/95,
+[data-theme="light"] .bg-\[\#050507\]\/85,
+[data-theme="light"] .bg-black\/40,
+[data-theme="light"] .bg-black\/60,
+[data-theme="light"] .bg-black\/80 {
+  background-color: var(--surface-inverted-container) !important;
+  color: var(--text-inverted-primary) !important;
+  border-color: var(--border-inverted-stroke) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+}
+
+/* Primary Cards & Large Container Panels in Light Mode: High-Contrast #ffffff (92% opacity) */
+[data-theme="light"] .factory-bone-card,
+[data-theme="light"] .card-3d-orange,
+[data-theme="light"] .factory-dashboard-frame,
+[data-theme="light"] .factory-large-panel {
+  background-color: var(--surface-inverted-card) !important;
+  color: var(--text-inverted-primary) !important;
+  border: 1px solid var(--border-inverted-stroke) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  box-shadow: none !important;
+}
+
+/* Sub-Cards, Lift Containers, SQL Blocks, and Form Controls in Light Mode (#ffffff at 92% opacity) */
+[data-theme="light"] .card-3d-sub,
+[data-theme="light"] .factory-lift,
+[data-theme="light"] .bg-\[\#1d1a18\],
+[data-theme="light"] .bg-\[\#1f1d1c\],
+[data-theme="light"] .bg-\[\#101010\]:not([data-testid]),
+[data-theme="light"] .bg-\[\#0d0d0d\],
+[data-theme="light"] .bg-\[\#050507\],
+[data-theme="light"] .bg-\[\#09090E\],
+[data-theme="light"] .bg-\[\#12121A\],
+[data-theme="light"] .bg-\[\#12121A\]\/85,
+[data-theme="light"] .bg-\[\#12121A\]\/90,
+[data-theme="light"] .bg-\[\#14141C\],
+[data-theme="light"] .bg-\[\#161622\],
+[data-theme="light"] .bg-\[\#121218\],
+[data-theme="light"] .bg-\[\#0C0C12\]\/92,
+[data-theme="light"] .bg-black,
+[data-theme="light"] .bg-white\/5,
+[data-theme="light"] .bg-white\/10,
+[data-theme="light"] main [class*="bg-[#101010"],
+[data-theme="light"] main [class*="bg-[#1d1a18"],
+[data-theme="light"] main [class*="bg-[#1f1d1c"],
+[data-theme="light"] main [class*="bg-[#0d0d0d"],
+[data-theme="light"] main [class*="bg-[#050507"],
+[data-theme="light"] main [class*="bg-[#09090E"],
+[data-theme="light"] main [class*="bg-[#0C0C12"],
+[data-theme="light"] main [class*="bg-[#12121"],
+[data-theme="light"] main [class*="bg-[#14141"],
+[data-theme="light"] main [class*="bg-[#16162"],
+[data-theme="light"] main [class*="bg-black"],
+[data-theme="light"] footer [class*="bg-[#101010"],
+[data-theme="light"] footer [class*="bg-[#1d1a18"],
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: var(--surface-inverted-container) !important;
+  color: var(--text-inverted-primary) !important;
+  border-color: var(--border-inverted-stroke) !important;
+}
+
+/* Ensure all nested dark backgrounds inside Light Mode cards/tables also invert cleanly */
+[data-theme="light"] main .bg-\[\#101010\],
+[data-theme="light"] footer .bg-\[\#101010\] {
+  background-color: var(--surface-inverted-container) !important;
+  color: var(--text-inverted-primary) !important;
+  border-color: var(--border-inverted-stroke) !important;
+}
+
+/* Primary Typography in Light Mode — Strictly #101010 (--text-inverted-primary) to prevent white-on-white */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] th,
+[data-theme="light"] td,
+[data-theme="light"] pre,
+[data-theme="light"] code,
+[data-theme="light"] .text-white,
+[data-theme="light"] .text-\[\#eeeeee\],
+[data-theme="light"] .text-\[\#fafafa\],
+[data-theme="light"] .text-\[\#F4F4F6\],
+[data-theme="light"] .text-\[\#E4E4ED\],
+[data-theme="light"] .text-\[\#E5E7EB\],
+[data-theme="light"] .text-\[\#D8DAE0\],
+[data-theme="light"] .text-\[\#D4D4D8\],
+[data-theme="light"] .text-\[\#C8CAD0\],
+[data-theme="light"] [class*="text-white"],
+[data-theme="light"] [class*="text-[#eeeeee"],
+[data-theme="light"] [class*="text-[#fafafa"] {
+  color: var(--text-inverted-primary) !important;
+}
+
+/* Secondary & Muted Typography in Light Mode — High-Contrast Charcoal (--text-inverted-secondary) */
+[data-theme="light"] p,
+[data-theme="light"] label,
+[data-theme="light"] .text-\[\#b8b3b0\],
+[data-theme="light"] .text-\[\#AEAEB7\],
+[data-theme="light"] .text-\[\#9494A3\],
+[data-theme="light"] .text-\[\#8a8380\],
+[data-theme="light"] .text-\[\#7E7E8C\],
+[data-theme="light"] .text-\[\#6E6E77\] {
+  color: var(--text-inverted-secondary) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: var(--text-inverted-muted) !important;
+}
+
+/* Semantic Accent Text in Light Mode — High-Contrast Daylight Calibration */
+[data-theme="light"] .text-\[\#a0ca92\],
+[data-theme="light"] .text-emerald-300,
+[data-theme="light"] .text-emerald-400 {
+  color: #166534 !important;
+}
+
+[data-theme="light"] .text-\[\#ee6018\],
+[data-theme="light"] .text-\[\#FF8800\],
+[data-theme="light"] .text-\[\#FF5E00\] {
+  color: #c2410c !important;
+}
+
+[data-theme="light"] .text-amber-200,
+[data-theme="light"] .text-amber-300,
+[data-theme="light"] .text-amber-400 {
+  color: #9a3412 !important;
+}
+
+[data-theme="light"] .text-rose-200,
+[data-theme="light"] .text-rose-300,
+[data-theme="light"] .text-rose-400,
+[data-theme="light"] .text-red-400 {
+  color: #b91c1c !important;
+}
+
+[data-theme="light"] .text-cyan-300,
+[data-theme="light"] .text-cyan-400,
+[data-theme="light"] .text-sky-400 {
+  color: #0369a1 !important;
+}
+
+/* Borders & Dividers in Light Mode */
+[data-theme="light"] .border-\[\#3d3a39\],
+[data-theme="light"] .border-\[\#1d1a18\],
+[data-theme="light"] .border-white\/5,
+[data-theme="light"] .border-white\/8,
+[data-theme="light"] .border-white\/10,
+[data-theme="light"] .border-white\/15,
+[data-theme="light"] .divide-\[\#3d3a39\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #c2bcb2 !important;
+}
+
+/* Active & Primary Buttons in Light Mode — High-Contrast Obsidian Fill (#101010) with Chalk Text (#fafafa) */
+[data-theme="light"] .btn-blaze-orange,
+[data-theme="light"] .factory-btn-light,
+[data-theme="light"] button.bg-\[\#fafafa\],
+[data-theme="light"] button.bg-\[\#eeeeee\] {
+  background-color: #101010 !important;
+  color: #fafafa !important;
+  border-color: #101010 !important;
+}
+
+[data-theme="light"] .btn-blaze-orange *,
+[data-theme="light"] .factory-btn-light *,
+[data-theme="light"] button.bg-\[\#fafafa\] *,
+[data-theme="light"] button.bg-\[\#eeeeee\] * {
+  color: #fafafa !important;
+}
+
+[data-theme="light"] .btn-blaze-orange:hover:not(:disabled),
+[data-theme="light"] .factory-btn-light:hover:not(:disabled) {
+  background-color: #2b2725 !important;
+  color: #fafafa !important;
+  border-color: #101010 !important;
+}
+
+[data-theme="light"] .factory-btn-dark,
+[data-theme="light"] .btn-obsidian-secondary,
+[data-theme="light"] .factory-btn-ghost {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  color: #101010 !important;
+  border-color: #a8a196 !important;
+}
+
+[data-theme="light"] .factory-btn-dark:hover:not(:disabled),
+[data-theme="light"] .btn-obsidian-secondary:hover:not(:disabled),
+[data-theme="light"] .factory-btn-ghost:hover:not(:disabled) {
+  background-color: #101010 !important;
+  color: #fafafa !important;
+  border-color: #101010 !important;
+}
+
+[data-theme="light"] .factory-btn-dark:hover:not(:disabled) *,
+[data-theme="light"] .btn-obsidian-secondary:hover:not(:disabled) *,
+[data-theme="light"] .factory-btn-ghost:hover:not(:disabled) * {
+  color: #fafafa !important;
+}
+
+/* ========================================================================== */
+/* 5. RESERVE #ee6018 EXCLUSIVELY FOR STATUS INDICATORS                       */
+/* ========================================================================== */
+
+/* Status Pulse Dot — Exclusive 6px dot selector */
+.factory-status-pulse,
+.status-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50% !important;
+  background-color: var(--color-signal-orange) !important;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Prevent #ee6018 / legacy orange from filling standard buttons, badges, or cards — map to Carbon Lift (#1d1a18) */
+.bg-\[\#FF5E00\],
+.bg-\[\#FF5E00\]\/10,
+.bg-\[\#FF5E00\]\/14,
+.bg-\[\#FF5E00\]\/15,
+.bg-\[\#FF5E00\]\/16,
+.bg-\[\#FF5E00\]\/20,
+.bg-\[\#ee6018\]:not(.factory-status-pulse):not(.status-indicator-dot):not(.rounded-full):not(.janpay-voice-orb):not(.janpay-eq-bar) {
+  background-color: var(--surface-carbon-lift) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+}
+
+[data-theme="light"] .bg-\[\#FF5E00\],
+[data-theme="light"] .bg-\[\#FF5E00\]\/10,
+[data-theme="light"] .bg-\[\#FF5E00\]\/14,
+[data-theme="light"] .bg-\[\#FF5E00\]\/15,
+[data-theme="light"] .bg-\[\#FF5E00\]\/16,
+[data-theme="light"] .bg-\[\#FF5E00\]\/20,
+[data-theme="light"] .bg-\[\#ee6018\]:not(.factory-status-pulse):not(.status-indicator-dot):not(.rounded-full):not(.janpay-voice-orb):not(.janpay-eq-bar) {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #101010 !important;
+  border: 1px solid #c2bcb2 !important;
+}
+
+/* Map non-status orange text classes to neutral Warm Granite (#8a8380) in Dark Mode */
+.text-\[\#FF8800\],
+.text-\[\#FF5E00\] {
+  color: var(--color-warm-granite) !important;
+}
+
+/* Map non-status orange borders to Ash Stroke (#3d3a39) except on the circular voice orb */
+.border-\[\#ee6018\]:not(.janpay-voice-orb):not(.janpay-voice-ring):not(.janpay-orb-telemetry-tag),
+.border-\[\#FF5E00\],
+.border-\[\#FF5E00\]\/30,
+.border-\[\#FF5E00\]\/40,
+.border-\[\#FF6A00\]\/20,
+.border-white\/8,
+.border-white\/10,
+.border-white\/15 {
+  border-color: var(--color-ash-stroke) !important;
+}
+
+/* ========================================================================== */
+/* 6. MONOCHROME BUTTON SYSTEM (3px Border Radius, Zero Brand Color Fills)    */
+/* ========================================================================== */
+.btn-blaze-orange,
+.factory-btn-light {
+  background-color: var(--color-chalk) !important;
+  color: var(--color-obsidian-canvas) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+  border-radius: var(--radius-buttons) !important;
+  font-family: var(--font-geist);
+  font-weight: var(--font-weight-regular) !important;
+  letter-spacing: -0.015em;
+  box-shadow: none !important;
+}
+
+.btn-blaze-orange:hover:not(:disabled),
+.factory-btn-light:hover:not(:disabled) {
+  background-color: var(--surface-carbon-lift) !important;
+  color: var(--color-bone) !important;
+  border-color: var(--color-obsidian-canvas) !important;
+}
+
+.btn-blaze-orange:disabled,
+.factory-btn-light:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.factory-btn-dark {
+  background-color: var(--surface-carbon-lift) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+  border-radius: var(--radius-buttons) !important;
+  font-family: var(--font-geist);
+  font-weight: var(--font-weight-regular) !important;
+  letter-spacing: -0.015em;
+  box-shadow: none !important;
+}
+
+.factory-btn-dark:hover:not(:disabled) {
+  background-color: var(--surface-obsidian-canvas) !important;
+  border-color: var(--color-chalk) !important;
+  color: var(--color-chalk) !important;
+}
+
+.btn-obsidian-secondary,
+.factory-btn-ghost {
+  background-color: var(--surface-carbon-lift) !important;
+  color: var(--color-bone) !important;
+  border: 1px solid var(--color-ash-stroke) !important;
+  border-radius: var(--radius-buttons) !important;
+  font-family: var(--font-geist);
+  font-weight: var(--font-weight-regular) !important;
+  box-shadow: none !important;
+}
+
+.btn-obsidian-secondary:hover:not(:disabled),
+.factory-btn-ghost:hover:not(:disabled) {
+  border-color: var(--color-chalk) !important;
+  color: var(--color-chalk) !important;
+}
+
+/* ========================================================================== */
+/* 6. STRICT 3px / 10px / 20px BORDER-RADIUS ENFORCEMENT                      */
+/* ========================================================================== */
+
+/* 20px (--radius-2xl / --radius-largepanels): Large Panels & Dashboard Frames */
+.rounded-3xl,
+.rounded-\[20px\],
+.rounded-\[24px\],
+.rounded-\[26px\],
+.rounded-\[28px\],
+.factory-large-panel,
+.factory-dashboard-frame {
+  border-radius: var(--radius-largepanels) !important;
+}
+
+/* 10px (--radius-lg / --radius-cards): Primary Cards & Sub-Cards */
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-\[10px\],
+.factory-bone-card,
+.card-3d-orange,
+.card-3d-sub {
+  border-radius: var(--radius-cards) !important;
+}
+
+/* 3px (--radius-sm / --radius-buttons / --radius-nav): Buttons, Nav, Inputs, Tags (excluding .janpay-voice-orb & .janpay-voice-ring) */
+button:not(.janpay-voice-orb),
+input,
+select,
+textarea,
+.rounded,
+.rounded-sm,
+.rounded-md,
+.rounded-\[3px\],
+button.rounded-full:not(.janpay-voice-orb),
+a.rounded-full,
+input.rounded-full,
+select.rounded-full,
+span.rounded-full:not(.factory-status-pulse):not(.status-indicator-dot):not(.janpay-voice-ring):not(.janpay-voice-bar):not(.w-1\.5):not(.w-2\.5) {
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ========================================================================== */
+/* 6B. JANPAY AI VOICE ASSISTANT TRUE CIRCULAR ORB & CONCENTRIC RINGS         */
+/*     Distinct Factory Visual States: READY, LISTENING, PROCESSING, SPEAKING */
+/* ========================================================================== */
+.janpay-voice-stage {
+  position: relative !important;
+  width: 228px !important;
+  height: 228px !important;
+  min-width: 228px !important;
+  min-height: 228px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+span.janpay-voice-ring {
+  position: absolute !important;
+  inset: 0 !important;
+  margin: auto !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+  transform-origin: center center !important;
+  z-index: 10 !important;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              background 0.35s ease,
+              opacity 0.35s ease !important;
+}
+
+/* Base / READY Ring Geometry */
+span.janpay-voice-ring.janpay-voice-ring-outer {
+  width: 220px !important;
+  height: 220px !important;
+  border: 1.5px dashed rgba(238, 96, 24, 0.58) !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.06) 0%, transparent 72%) !important;
+  animation: janpayRingBreathOuter 3.2s ease-in-out infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-mid {
+  width: 198px !important;
+  height: 198px !important;
+  border: 1px solid rgba(61, 58, 57, 0.85) !important;
+  background: transparent !important;
+  opacity: 0.7 !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-inner {
+  width: 176px !important;
+  height: 176px !important;
+  border: 2px solid rgba(238, 96, 24, 0.85) !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.12) 0%, transparent 70%) !important;
+  animation: janpayRingBreathInner 2.4s ease-in-out infinite !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* STATE 1: LISTENING — Signal Orange (#ee6018) Sonar Ripple & Capture Pulse  */
+/* -------------------------------------------------------------------------- */
+span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-active,
+span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-listening {
+  border: 2.5px solid #ee6018 !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.28) 0%, transparent 75%) !important;
+  animation: janpayRingRippleOuter 1.15s cubic-bezier(0, 0, 0.2, 1) infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-mid.janpay-voice-ring-listening {
+  border: 2px dashed #ee6018 !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.16) 0%, transparent 70%) !important;
+  opacity: 1 !important;
+  animation: janpayRingListeningMid 0.72s ease-in-out infinite alternate !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-active,
+span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-listening {
+  border: 2.5px solid #fafafa !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.36) 0%, transparent 72%) !important;
+  animation: janpayRingPulseInner 0.65s ease-in-out infinite alternate !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* STATE 2: PROCESSING — Chalk (#fafafa) & Orange (#ee6018) Dual Rotor Bezel  */
+/* -------------------------------------------------------------------------- */
+span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-processing {
+  border: 3px dashed #fafafa !important;
+  background: radial-gradient(circle, rgba(250, 250, 250, 0.14) 0%, transparent 74%) !important;
+  animation: janpayProcessingSpinClockwise 2.2s linear infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-mid.janpay-voice-ring-processing {
+  border: 2.5px dashed #ee6018 !important;
+  background: radial-gradient(circle, rgba(238, 96, 24, 0.16) 0%, transparent 68%) !important;
+  opacity: 1 !important;
+  animation: janpayProcessingSpinCounter 1.55s linear infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-processing {
+  border: 2.5px solid #eeeeee !important;
+  background: radial-gradient(circle, rgba(250, 250, 250, 0.22) 0%, transparent 72%) !important;
+  animation: janpayProcessingPulseInner 0.55s ease-in-out infinite alternate !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* STATE 3: SPEAKING — Metric Green (#a0ca92) Harmonic Acoustic Broadcast     */
+/* -------------------------------------------------------------------------- */
+span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-speaking {
+  border: 2.5px solid #a0ca92 !important;
+  background: radial-gradient(circle, rgba(160, 202, 146, 0.25) 0%, transparent 75%) !important;
+  animation: janpaySpeakingWaveOuter 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-mid.janpay-voice-ring-speaking {
+  border: 2px dashed #a0ca92 !important;
+  background: radial-gradient(circle, rgba(160, 202, 146, 0.18) 0%, transparent 72%) !important;
+  opacity: 1 !important;
+  animation: janpaySpeakingWaveMid 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s infinite !important;
+}
+
+span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-speaking {
+  border: 2.5px solid #a0ca92 !important;
+  background: radial-gradient(circle, rgba(160, 202, 146, 0.3) 0%, transparent 70%) !important;
+  animation: janpaySpeakingResonanceInner 0.78s ease-in-out infinite alternate !important;
+}
+
+[data-theme="light"] span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-listening {
+  border: 2.5px solid #ee6018 !important;
+}
+
+[data-theme="light"] span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-processing {
+  border: 3px dashed #101010 !important;
+}
+
+[data-theme="light"] span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-processing {
+  border: 2.5px solid #101010 !important;
+}
+
+[data-theme="light"] span.janpay-voice-ring.janpay-voice-ring-outer.janpay-voice-ring-speaking,
+[data-theme="light"] span.janpay-voice-ring.janpay-voice-ring-inner.janpay-voice-ring-speaking {
+  border-color: #166534 !important;
+}
+
+/* ========================================================================== */
+/* VOICE ORB CORE BUTTON STATES                                               */
+/* ========================================================================== */
+button.janpay-voice-orb {
+  width: 148px !important;
+  height: 148px !important;
+  min-width: 148px !important;
+  min-height: 148px !important;
+  max-width: 148px !important;
+  max-height: 148px !important;
+  aspect-ratio: 1 / 1 !important;
+  padding: 0 !important;
+  margin: auto !important;
+  border-radius: 50% !important;
+  border: 3px solid #ee6018 !important;
+  outline: 2px solid rgba(238, 96, 24, 0.38) !important;
+  outline-offset: 4px !important;
+  background: radial-gradient(circle at 35% 30%, #2d2622 0%, #1d1a18 65%, #12100e 100%) !important;
+  color: #fafafa !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 20 !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.25s ease,
+              border-color 0.25s ease,
+              outline-color 0.25s ease !important;
+}
+
+button.janpay-voice-orb > svg {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  flex-shrink: 0 !important;
+}
+
+button.janpay-voice-orb:hover {
+  transform: scale(1.04) !important;
+  border-color: #fafafa !important;
+  outline-color: rgba(238, 96, 24, 0.75) !important;
+}
+
+/* Generic Active Fallback + Explicit LISTENING State (#ee6018 Signal Orange Core) */
+button.janpay-voice-orb.janpay-voice-orb-active,
+button.janpay-voice-orb.janpay-voice-orb-listening {
+  background: radial-gradient(circle at 35% 30%, #ff7b33 0%, #ee6018 68%, #b83f06 100%) !important;
+  color: #fafafa !important;
+  border: 3px solid #fafafa !important;
+  outline: 3px solid #ee6018 !important;
+  outline-offset: 6px !important;
+  transform: scale(1.06) !important;
+  animation: janpayOrbListeningPulse 0.85s ease-in-out infinite alternate !important;
+}
+
+/* Explicit PROCESSING State (Stark Factory Obsidian #101010 + Chalk #fafafa Bezel) */
+button.janpay-voice-orb.janpay-voice-orb-processing {
+  background: radial-gradient(circle at 50% 35%, #2b2725 0%, #1d1a18 58%, #101010 100%) !important;
+  color: #fafafa !important;
+  border: 3.5px solid #fafafa !important;
+  outline: 2.5px dashed #ee6018 !important;
+  outline-offset: 6px !important;
+  transform: scale(1.05) !important;
+  animation: janpayOrbProcessingCadence 0.65s ease-in-out infinite alternate !important;
+}
+
+/* Explicit SPEAKING State (Metric Green #a0ca92 + Carbon Lift #1d1a18 Broadcast Core) */
+button.janpay-voice-orb.janpay-voice-orb-speaking {
+  background: radial-gradient(circle at 35% 30%, #2f422b 0%, #1d281a 62%, #121710 100%) !important;
+  color: #fafafa !important;
+  border: 3px solid #a0ca92 !important;
+  outline: 3px solid rgba(160, 202, 146, 0.85) !important;
+  outline-offset: 6px !important;
+  transform: scale(1.06) !important;
+  animation: janpayOrbSpeakingBroadcast 1.05s ease-in-out infinite alternate !important;
+}
+
+button.janpay-voice-orb.janpay-voice-orb-listening,
+button.janpay-voice-orb.janpay-voice-orb-listening *,
+[data-theme="light"] button.janpay-voice-orb.janpay-voice-orb-listening,
+[data-theme="light"] button.janpay-voice-orb.janpay-voice-orb-listening * {
+  color: #fafafa !important;
+}
+
+button.janpay-voice-orb.janpay-voice-orb-processing .janpay-orb-telemetry-tag {
+  color: #ee6018 !important;
+  border-color: #ee6018 !important;
+}
+
+button.janpay-voice-orb.janpay-voice-orb-speaking .janpay-orb-telemetry-tag,
+button.janpay-voice-orb.janpay-voice-orb-speaking > svg {
+  color: #a0ca92 !important;
+}
+
+[data-theme="light"] button.janpay-voice-orb:not(.janpay-voice-orb-active) {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f7f4ef 75%, #ebe5dc 100%) !important;
+  color: #101010 !important;
+  border: 3px solid #ee6018 !important;
+  outline: 2px solid rgba(238, 96, 24, 0.45) !important;
+}
+
+[data-theme="light"] button.janpay-voice-orb:not(.janpay-voice-orb-active):hover {
+  border-color: #101010 !important;
+}
+
+/* Wave Bars inside the Voice Orb */
+span.janpay-voice-bar {
+  border-radius: 9999px !important;
+  display: inline-block !important;
+  width: 4px !important;
+  background-color: #ee6018 !important;
+  transition: height 0.12s ease, background-color 0.2s ease !important;
+}
+
+span.janpay-voice-bar.janpay-voice-bar-listening {
+  background-color: #fafafa !important;
+}
+
+span.janpay-voice-bar.janpay-voice-bar-processing {
+  background-color: #ee6018 !important;
+}
+
+span.janpay-voice-bar.janpay-voice-bar-processing:nth-child(odd) {
+  background-color: #fafafa !important;
+}
+
+span.janpay-voice-bar.janpay-voice-bar-speaking {
+  background-color: #a0ca92 !important;
+}
+
+span.janpay-voice-bar.janpay-voice-bar-speaking:nth-child(even) {
+  background-color: #fafafa !important;
+}
+
+/* 16-Band Frequency Equalizer Bars (.janpay-eq-bar) */
+span.janpay-eq-bar {
+  background-color: #4d4947 !important;
+  border: none !important;
+}
+
+span.janpay-eq-bar.janpay-eq-bar-listening {
+  background-color: #ee6018 !important;
+}
+
+span.janpay-eq-bar.janpay-eq-bar-processing {
+  background-color: #ee6018 !important;
+}
+
+span.janpay-eq-bar.janpay-eq-bar-processing:nth-child(odd) {
+  background-color: #fafafa !important;
+}
+
+span.janpay-eq-bar.janpay-eq-bar-speaking {
+  background-color: #fafafa !important;
+}
+
+span.janpay-eq-bar.janpay-eq-bar-speaking:nth-child(odd) {
+  background-color: #a0ca92 !important;
+}
+
+@keyframes janpayRingBreathOuter {
+  0%, 100% {
+    transform: scale(0.97);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+@keyframes janpayRingBreathInner {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(0.96);
+    opacity: 1;
+  }
+}
+
+@keyframes janpayRingRippleOuter {
+  0% {
+    transform: scale(0.92);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.09);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.13);
+    opacity: 0;
+  }
+}
+
+@keyframes janpayRingListeningMid {
+  0% {
+    transform: scale(0.95) rotate(-8deg);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.05) rotate(8deg);
+    opacity: 1;
+  }
+}
+
+@keyframes janpayRingPulseInner {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes janpayProcessingSpinClockwise {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes janpayProcessingSpinCounter {
+  0% {
+    transform: rotate(360deg) scale(0.98);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(0deg) scale(0.98);
+  }
+}
+
+@keyframes janpayProcessingPulseInner {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes janpaySpeakingWaveOuter {
+  0% {
+    transform: scale(0.93);
+    opacity: 0.95;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+
+@keyframes janpaySpeakingWaveMid {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scale(1.07);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1.11);
+    opacity: 0;
+  }
+}
+
+@keyframes janpaySpeakingResonanceInner {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.82;
+  }
+  100% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes janpayOrbListeningPulse {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes janpayOrbProcessingCadence {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes janpayOrbSpeakingBroadcast {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1.07);
+  }
+}
+
+/* ========================================================================== */
+/* 7. SCROLLBAR STYLING                                                       */
+/* ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-obsidian-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ash-stroke);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-granite);
+}

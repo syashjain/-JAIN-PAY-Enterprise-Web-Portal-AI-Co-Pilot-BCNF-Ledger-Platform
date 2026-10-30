@@ -1,0 +1,5 @@
+{
+  "summary":  "A complete, executive guide and catalog of the 21 verified voice queries grounded in Jain Pay's 12-table PostgreSQL BCNF database. Each entry specifies the spoken query prompt, category, target BCNF tables, exact SQL query executed, immediate verbal reply script, and key telemetry metrics for professor demonstration.",
+  "updatedAt":  "2026-10-29T17:42:42.528342665Z",
+  "userFacing":  true
+}

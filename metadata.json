@@ -1,0 +1,10 @@
+{
+  "name": "Remix JAIN PAY — Enterprise Web Portal, AI Co-Pilot \u0026 BCNF Ledger Platform",
+  "description": "100% Full-Screen Desktop Web Portal featuring PostgreSQL 16+ Serializable Snapshot Isolation (SSI), Row-Level Security (RLS), Double-Entry BCNF Ledger, and 15 Zero-Trust AI Co-Pilot Modules.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
